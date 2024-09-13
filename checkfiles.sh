@@ -1,17 +1,11 @@
 #!/bin/bash
 
-find . -name "*.hkl" | grep -v -e spiketrain -e mountains | xargs ls -hl > cf1.txt
+echo "Number of hkl files"
+find . -name "*.hkl" | grep -v -e spiketrain -e mountains | wc -l
 
-# cat cf1.txt
+echo "Number of mda files"
+find mountains -name "firings.mda" | wc -l
 
-wc -l cf1.txt
+echo "Time taken (s)"
+tail pipe-slurm*.out
 
-find mountains -name "firings.mda" | xargs ls -hl > cf2.txt
-
-# cat cf2.txt
-
-wc -l cf2.txt
-
-tail *slurm*.out
-
-rm cf1.txt cf2.txt
